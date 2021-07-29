@@ -21,3 +21,16 @@ $: java -jar [프로젝트명]+[version snapshot].jar 파일 실행
 
 
 
+### 스프링 웹 개발 기초
+
+- 정적 컨텐츠
+- MVC와 템플릿 엔진
+- API
+
+
+
+![스크린샷 2021-07-29 오후 10.52.36](/Users/yonghyun/Desktop/스크린샷 2021-07-29 오후 10.52.36.png)
+
+
+
+hello-static Controller를 먼저 찾고 없으면 resources/static/하위 경로에서 파일을 찾게됨
