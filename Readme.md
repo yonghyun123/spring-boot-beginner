@@ -33,4 +33,9 @@ $: java -jar [프로젝트명]+[version snapshot].jar 파일 실행
 
 
 
-hello-static Controller를 먼저 찾고 없으면 resources/static/하위 경로에서 파일을 찾게됨
+hello-static Controller를 먼저 찾고 없으면 resources/static/하위 경로에서 파일
+
+
+
+### MVC와 템플릿 엔진
+
