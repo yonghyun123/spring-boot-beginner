@@ -39,3 +39,15 @@ hello-static Controller를 먼저 찾고 없으면 resources/static/하위 경�
 
 ### MVC와 템플릿 엔진
 
+
+
+# API
+
+@ResponseBody
+
+- default 는 json 형식으로 http 응답에 넣는다
+- ResponseBody는 ViewResolver 대신 httpMessageConverter가 동작
+- 단순 문자열 일때StringHttpMessageConverter 동작
+-  객체일때, MappingJackson2HttpMessageConverter가 동작
+- 
+
