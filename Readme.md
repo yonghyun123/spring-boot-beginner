@@ -49,5 +49,49 @@ hello-static Controller를 먼저 찾고 없으면 resources/static/하위 경�
 - ResponseBody는 ViewResolver 대신 httpMessageConverter가 동작
 - 단순 문자열 일때StringHttpMessageConverter 동작
 -  객체일때, MappingJackson2HttpMessageConverter가 동작
-- 
+
+
+
+
+
+# TDD
+
+- Test Driven development
+- 개발을 구현하기 전에 Test를 먼저 만들어놓고 개발을 진행
+- @AfterEach 를 통한 각 Test가 끝난 후 후처리 로직 진행
+
+Ex) save, findByName 테스트가 끝날때마다 afterEach 메서드 실행
+
+```java
+@AfterEach
+    public void afterEach(){
+        memberRepository.clearStore();
+    }
+
+    @Test
+    public void save(){
+        Member member = new Member();
+        member.setName("spring");
+
+        memberRepository.save(member);
+        Member result = memberRepository.findById(member.getId()).get();
+        Assertions.assertThat(member).isEqualTo(result);
+    }
+
+    @Test
+    public void findByName(){
+        Member member = new Member();
+        member.setName("spring1");
+        memberRepository.save(member);
+
+        Member member2 = new Member();
+        member2.setName("spring2");
+        memberRepository.save(member2);
+
+        Member result = memberRepository.findByName("spring1").get();
+        Assertions.assertThat(member).isEqualTo(result);
+    }
+```
+
+
 
