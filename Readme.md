@@ -93,5 +93,7 @@ Ex) save, findByName 테스트가 끝날때마다 afterEach 메서드 실행
     }
 ```
 
+inteliJ cmd + option + v -> 반환형 단축키
+
 
 
