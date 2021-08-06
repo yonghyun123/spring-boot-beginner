@@ -93,7 +93,46 @@ Ex) save, findByName 테스트가 끝날때마다 afterEach 메서드 실행
     }
 ```
 
-inteliJ cmd + option + v -> 반환형 단축키
+inteliJ 단축기
+
+ cmd + option + v -> 반환형 단축키
+
+cmd +shift + t -> JUnit test create 단축키
+
+Shift +ctrl + r -> test run 단축키
+
+
+
+# Service layer test
+
+간략한 DI(dependency injection)
+
+MemberService class
+
+```java
+public class MemberService{
+  private MemberRepository memberRepository;
+  public MemberService(MemberRepository memberRepository){
+    this.memberRepository = memberRepository;
+  }
+}	
+
+```
+
+Test.class
+
+```java
+public void BeforeEach(){
+  memberRepository = new MemoryMemberRepository();
+  //memberService객체 입장에서는 repository가 주입되서 binding되는 부분
+  // 이걸 dependency injection(DI)라 한다
+  memberService = new MemberService(memberRepository);
+}
+```
+
+
+
+
 
 
 
