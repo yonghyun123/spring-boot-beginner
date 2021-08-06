@@ -103,7 +103,7 @@ Shift +ctrl + r -> test run 단축키
 
 
 
-# Service layer test
+# Service layer Assertions Test
 
 간략한 DI(dependency injection)
 
@@ -129,6 +129,36 @@ public void BeforeEach(){
   memberService = new MemberService(memberRepository);
 }
 ```
+
+
+
+# Spring bean과 의존관계
+
+- 생성자에 @Autowired가 있으면 스프링이 연관된 객체를 스프링 컨테이너에서 찾아서 넣어준다. 이렇게 객체 의존관계를 DI라 한다
+
+```java
+
+public class HelloController{
+	MemberService memberService;
+  @Autowired
+  public HelloController(MemberService memberService){
+    this.memberService = memberService;
+  }
+  //여기서 memberService가 스프링 빈으로 등록되어 있지 않아서 에러
+}
+```
+
+
+
+### 스프링 빈을 등록하는 2가지 방법
+
+- 컴포넌트 스캔과 자동 의존관계 설정
+- 자바 코드로 직접 스프링 빈 등록하기
+- ex) service, controller, repository 어노테이션에 component 어노테이션이 등록되어 있음
+
+> 참고: 스프링은 스프링 컨테이너에 스프링 빈을 등록할 때, 기본으로 싱글톤으로 등록한다 (유일하게 하나만 등록해서 공유한다) 따라서 같은 스프링 빈이면 모두 같은 인스턴스다. 설정으로 싱글톤이 아니게 설정할 수 있지만, 특별한 경우를 제외하면 대부분 싱글톤으로 사용한다.
+
+
 
 
 
