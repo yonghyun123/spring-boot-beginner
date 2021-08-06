@@ -210,9 +210,13 @@ public class MemberController {
 
 
 
-### 1. 홈화면 추가
+- 홈화면
+- 회원가입
+- 회원리스트
 
 
+
+# 스프링 DB 접근 기술
 
 
 
