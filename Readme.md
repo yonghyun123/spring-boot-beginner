@@ -1,10 +1,6 @@
 # Springboot 기록하는 습관
 
-
-
-![스크린샷 2021-07-27 오후 11.32.32](/Users/yonghyun/Desktop/스크린샷 2021-07-27 오후 11.32.32.png)
-
-
+![스크린샷 2021-07-27 오후 11.32.32](/Users/yonghyun/Desktop/60112334/사진/스크린샷 2021-07-27 오후 11.32.32.png)
 
 - 스프링 컨테이너 진입 후 viewResolver를 통해 매핑할 html을 찾음
 - Thymeleaf 템플릿 엔진으로 resources/templates/{ViewName}+'.html'을 찾도록 함
@@ -29,7 +25,7 @@ $: java -jar [프로젝트명]+[version snapshot].jar 파일 실행
 
 
 
-![스크린샷 2021-07-29 오후 10.52.36](/Users/yonghyun/Desktop/스크린샷 2021-07-29 오후 10.52.36.png)
+![스크린샷 2021-07-29 오후 10.52.36](/Users/yonghyun/Desktop/60112334/사진/스크린샷 2021-07-29 오후 10.52.36.png)
 
 
 
@@ -220,7 +216,30 @@ public class MemberController {
 
 
 
+![스크린샷 2021-08-06 오후 4.45.40](/Users/yonghyun/Desktop/60112334/사진/스크린샷 2021-08-06 오후 4.45.40.png)
 
+
+
+- Spring에 장점 인터페이스를 구현하는 구조로 DB의 구조를 바꿀때의 Config파일만 수정으로 변경가능
+- OCP(open close principle) 개방 폐쇄의 원리(확장은 열려있고, 수정변경에는 닫혀있다.)
+
+```java
+    public MemberRepository memberRepository(){
+      // return new MemoryMemberRepository();
+        return new JdbcMemberRepository(dataSource);
+    }
+```
+
+
+
+#  @SpringBootTest
+
+- @SpringBootTest : 스프링 컨테이너와 테스트를 함께 실행한다
+- @Transactional: 테스트 케이스에 이 어노테이션이 있으면, 테스트 시작 전에 트랜잭션을 시작하고, 테스트 완료 후에 항상 롤백한다. 이렇게 하면 DB에 데이터가 남지 않으므로 다음 테스트에 영향을 주지 않는다.
+
+
+
+# SpringJdbcTemplate
 
 
 
