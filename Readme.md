@@ -264,3 +264,5 @@ public class MemberController {
 > 따라서 JPA를 먼저 학습한 후 공부하는게 좋다
 
  
+
+> 참고: 실무에서는 JPA와 스프링 데이터 JPA를 기본으로 사용하고, 복잡한 동적쿼리는 Querydsl이라는 라이브러리를 사용한다.
