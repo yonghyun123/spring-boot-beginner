@@ -266,3 +266,40 @@ public class MemberController {
  
 
 > 참고: 실무에서는 JPA와 스프링 데이터 JPA를 기본으로 사용하고, 복잡한 동적쿼리는 Querydsl이라는 라이브러리를 사용한다.
+
+
+
+# AOP
+
+- 모든 메소드의 호출 시간을 측정하고 싶다면?
+- 공통 관심 사항(cross-cutting concern) vs 핵심 관심 사항(core concern)
+- 회원 가입 시간, 회원 조회 시간을 측정하고 싶다면?
+
+```java
+long start = System.currentTimeMillis();
+try{
+    validateDuplicateMember(member); //중복회원 검증
+    memberRepository.save(member);
+    return member.getId();
+} finally {
+    long finish = System.currentTimeMillis();
+    long result = finish - start;
+    System.out.println("join ="+result + "ms");
+}
+```
+
+문제!
+
+- 회원가입, 조회에 시간을 측정하는 기능은 핵심 관심 사항이 아니다
+- 시간을 측정하는 로직은 공통 관심 사항이다.
+- 시간을 측정하는 로직과 핵심 비즈니스의 로직이 섞여서 유지보수가 어렵다.
+- 시간을 측정하는 로직을 별도로 공통 로직으로 만들기 매우 어렵다(디자인 패턴 필요)
+- 시간을 측정하는 로직을 변경할 때 모든 로직을 찾아가면서 변경해야 한다.(비효율 끝판)
+
+
+
+# AOP 적용
+
+- AOP: Aspect Oriented Programming
+- 공통 관심사항(cross-cutting concern)과 핵심 관심 사항(core concern)을 분리
+- 
