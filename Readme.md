@@ -302,4 +302,41 @@ try{
 
 - AOP: Aspect Oriented Programming
 - 공통 관심사항(cross-cutting concern)과 핵심 관심 사항(core concern)을 분리
-- 
+
+
+
+```java
+
+@Aspect
+@Component
+public class TimeTraceAop {
+
+    @Around("execution(* hello.hellospring..*(..))")
+    public Object execute(ProceedingJoinPoint joinPoint) throws Throwable{
+        long start = System.currentTimeMillis();
+        System.out.println("start:"+joinPoint.toString());
+        try{
+            Object proceed = joinPoint.proceed();
+            return proceed;
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish-start;
+            System.out.println("end:"+ joinPoint.toString() + " " + timeMs + "ms");
+        }
+
+    }
+}
+```
+
+
+
+### 해결
+
+- 회원가입 회원 조회등 핵심 관심사항과 시간을 측정하는 공통 관심 사항을 분리한다.
+- 시간을 측정하는 로직을 별도의 공통로직으로 구현
+- 핵심 관심 사항을 유지
+- 변경이 필요하면 위의 로직만 변경
+- 원하는 적용대상 선택 가능
+
+
+
